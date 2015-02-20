@@ -1,0 +1,35 @@
+code for qtrc sensors
+
+kish [3:46 PM]
+void setup()
+{
+ 
+ Serial.begin(9600);
+ 
+ 
+}
+
+
+void loop()
+{
+ pinMode(13,OUTPUT);
+ int time_us =0;
+ digitalWrite(13,HIGH);
+ delayMicroseconds(10);
+ 
+ pinMode(13,INPUT);
+ 
+ int val = digitalRead(13);
+ 
+ // Calculates Tme taken for Total Capacitor Discharge
+ while(val == 1)
+ {
+   time_us += 1;
+   delayMicroseconds(1);
+   val = digitalRead(13);    
+ }
+ 
+ //Shorter Time Means More Reflectance
+ Serial.println(time);
+ 
+}
